@@ -192,14 +192,17 @@ function App() {
           ))}
         </nav>
 
-        <div className="mt-16 p-4 bg-slate-800 rounded-xl">
-          <p className="text-green-400 text-sm font-semibold">
-            AI Powered
-          </p>
-          <p className="text-slate-400 text-xs mt-2">
-            Smart Retail Sales Forecasting System
-          </p>
-        </div>
+        <div className="mt-8 p-4 bg-slate-800 rounded-xl">
+  <p className="text-green-400 text-sm font-bold tracking-wide">
+    RETAIL INTELLIGENCE
+  </p>
+  <p className="text-slate-300 text-xs mt-2 leading-relaxed">
+    Machine Learning-Based Sales Forecasting & Business Analytics
+  </p>
+  <p className="text-blue-400 text-xs font-semibold mt-3">
+    Predict. Analyze. Grow.
+  </p>
+</div>
 
         <div className="absolute bottom-6 left-6 right-6">
           <p className="text-slate-400 text-sm mb-3">
