@@ -44,20 +44,17 @@ const cards = [
     {
         title: 'Total Products',
         value: data.total_products,
-        icon: '📦',
-        color: 'bg-blue-100 text-blue-600'
+        
     },
     {
         title: 'Total Units Sold',
         value: data.total_sales.toLocaleString('en-IN'),
-        icon: '🛒',
-        color: 'bg-green-100 text-green-600'
+        
     },
     {
         title: 'Total Revenue',
         value: `₹${data.total_revenue.toLocaleString('en-IN', { maximumFractionDigits: 2 })}`,
-        icon: '💰',
-        color: 'bg-purple-100 text-purple-600'
+       
     }
 ]
 

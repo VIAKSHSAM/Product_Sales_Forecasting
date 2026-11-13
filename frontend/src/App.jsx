@@ -40,11 +40,11 @@ function App() {
   }
 
   const menuItems = [
-    { name: 'Dashboard', icon: '📊' },
-    { name: 'Sales Prediction', icon: '🔮' },
-    { name: 'Prediction History', icon: '📜' },
-    { name: 'Analytics', icon: '📈' },
-    { name: 'About Project', icon: 'ℹ️' }
+    { name: 'Dashboard'  },
+    { name: 'Sales Prediction',  },
+    { name: 'Prediction History', },
+    { name: 'Analytics', },
+    { name: 'About Project' }
   ]
 
   useEffect(() => {
@@ -106,38 +106,34 @@ function App() {
     {
       title: 'Total Products',
       value: dashboardData ? dashboardData.total_products : 'Loading...',
-      icon: '📦',
-      color: 'bg-blue-100 text-blue-600'
+      
     },
     {
       title: 'Total Sales',
       value: dashboardData ? formatNumber(dashboardData.total_sales) : 'Loading...',
-      icon: '🛒',
-      color: 'bg-green-100 text-green-600'
+     
     },
     {
       title: 'Total Revenue',
       value: dashboardData ? `₹${dashboardData.total_revenue.toLocaleString('en-IN', { maximumFractionDigits: 2 })}` : 'Loading...',
-      icon: '💰',
-      color: 'bg-purple-100 text-purple-600'
+      
     },
     {
       title: 'Model R² Score',
       value: '34.04%',
-      icon: '🎯',
-      color: 'bg-orange-100 text-orange-600'
+     
+     
     },
     {
       title: 'MAE',
       value: '68.80',
-      icon: '📉',
-      color: 'bg-pink-100 text-pink-600'
+      
+      
     },
     {
       title: 'RMSE',
       value: '87.91',
-      icon: '📐',
-      color: 'bg-indigo-100 text-indigo-600'
+     
     }
   ]
 

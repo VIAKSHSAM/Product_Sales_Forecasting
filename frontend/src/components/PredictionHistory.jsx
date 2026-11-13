@@ -222,9 +222,7 @@ function PredictionHistory() {
         <div className="min-h-screen">
             <div className="mb-8">
                 <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl">
-                        📜
-                    </div>
+                    
 
                     <div>
                         <h2 className="text-2xl md:text-3xl font-bold text-slate-800">
