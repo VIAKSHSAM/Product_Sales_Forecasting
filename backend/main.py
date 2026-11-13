@@ -34,7 +34,7 @@ app.add_middleware(
 Base.metadata.create_all(bind=engine)
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR.parent / "models"
+MODEL_DIR = BASE_DIR / "models"
 
 model = joblib.load(MODEL_DIR / "sales_prediction_model.pkl")
 preprocessor = joblib.load(MODEL_DIR / "preprocessor.pkl")
@@ -69,10 +69,12 @@ class PredictionInput(BaseModel):
     Day: int
     DayOfWeek: int
 
+
 class CSVImportInput(BaseModel):
     product: str
     sales: float
     date: str
+
 
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(security),
@@ -114,21 +116,21 @@ def get_current_user(
     return user
 
 
-@app.get("/")
+@app.get("/api/")
 def home():
     return {
         "message": "Product & Sales Forecasting API is running"
     }
 
 
-@app.get("/model-status")
+@app.get("/api/model-status")
 def model_status():
     return {
         "message": "Machine Learning Model Loaded Successfully"
     }
 
 
-@app.post("/signup")
+@app.post("/api/signup")
 def signup(
     data: SignupRequest,
     db: Session = Depends(get_db)
@@ -160,7 +162,7 @@ def signup(
     }
 
 
-@app.post("/login")
+@app.post("/api/login")
 def login(
     data: LoginRequest,
     db: Session = Depends(get_db)
@@ -193,7 +195,7 @@ def login(
     }
 
 
-@app.get("/me")
+@app.get("/api/me")
 def get_me(
     current_user: User = Depends(get_current_user)
 ):
@@ -204,7 +206,7 @@ def get_me(
     }
 
 
-@app.post("/predict")
+@app.post("/api/predict")
 def predict_sales(
     data: PredictionInput,
     db: Session = Depends(get_db),
@@ -252,11 +254,11 @@ def predict_sales(
     }
 
 
-@app.get("/analytics")
+@app.get("/api/analytics")
 def get_analytics(
     current_user: User = Depends(get_current_user)
 ):
-    dataset_path = BASE_DIR.parent / "dataset" / "retail_store_inventory.csv"
+    dataset_path = BASE_DIR / "dataset" / "retail_store_inventory.csv"
 
     df = pd.read_csv(dataset_path)
 
@@ -315,7 +317,9 @@ def get_analytics(
             for index, value in products.items()
         ]
     }
-@app.get("/prediction-history")
+
+
+@app.get("/api/prediction-history")
 def get_prediction_history(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
@@ -338,7 +342,8 @@ def get_prediction_history(
         for prediction in predictions
     ]
 
-@app.post("/import-history")
+
+@app.post("/api/import-history")
 def import_history(
     data: CSVImportInput,
     db: Session = Depends(get_db),
@@ -361,7 +366,8 @@ def import_history(
         "id": new_prediction.id
     }
 
-@app.delete("/prediction-history/{prediction_id}")
+
+@app.delete("/api/prediction-history/{prediction_id}")
 def delete_prediction(
     prediction_id: int,
     db: Session = Depends(get_db),
@@ -383,7 +389,8 @@ def delete_prediction(
 
     return {"message": "Prediction deleted successfully"}
 
-@app.delete("/prediction-history")
+
+@app.delete("/api/prediction-history")
 def clear_prediction_history(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)

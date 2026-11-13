@@ -17,7 +17,7 @@ const [error, setError] = useState('')
 
 
 useEffect(() => {
-    fetch('http://127.0.0.1:8000/analytics', {
+    fetch('/api/analytics', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }

@@ -163,11 +163,11 @@ uvicorn main:app --reload
 
 Backend URL:
 
-http://127.0.0.1:8000
+/api
 
 API Documentation:
 
-http://127.0.0.1:8000/docs
+/api/docs
 
 ### 3. Frontend Setup
 

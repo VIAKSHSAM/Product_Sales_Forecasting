@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetch('http://127.0.0.1:8000/analytics', {
+      fetch('/api/analytics', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }
@@ -67,7 +67,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn && activePage === 'Dashboard') {
-      fetch('http://127.0.0.1:8000/prediction-history', {
+      fetch('/api/prediction-history', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`
         }

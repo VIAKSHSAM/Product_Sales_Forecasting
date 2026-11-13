@@ -13,7 +13,7 @@ function PredictionHistory() {
 
         try {
             const response = await fetch(
-                'http://127.0.0.1:8000/prediction-history',
+                '/api/prediction-history',
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -56,7 +56,7 @@ function PredictionHistory() {
                     const [product, sales, date] = row.split(',')
 
                     const response = await fetch(
-                        'http://127.0.0.1:8000/import-history',
+                        '/api/import-history',
                         {
                             method: 'POST',
                             headers: {
@@ -90,7 +90,7 @@ function PredictionHistory() {
     const handleDelete = async (id) => {
         try {
             const response = await fetch(
-                `http://127.0.0.1:8000/prediction-history/${id}`,
+                `/api/prediction-history/${id}`,
                 {
                     method: 'DELETE',
                     headers: {
@@ -116,7 +116,7 @@ function PredictionHistory() {
 
         try {
             const response = await fetch(
-                'http://127.0.0.1:8000/prediction-history',
+                '/api/prediction-history',
                 {
                     method: 'DELETE',
                     headers: {
